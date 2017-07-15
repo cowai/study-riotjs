@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <link rel="stylesheet" type="text/css" href="sample.css">
+    <script src='sample.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.18/riot+compiler.js'></script>
+
+    <style>
+        $ {
+            style
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ユーザー定義のタグをここに展開 -->
+    <app title='Hello, Riot.js'></app>
+
+    <!-- app タグを定義 -->
+    <script type="riot/tag">
+        <app>
+          <h1>expression</h1>
+          <ul>
+            <li each='{list}' class='{ completed: done }'>{ title }</li>
+            <!-- completed ... class名 / done ... 真偽値 -->
+          </ul>
+
+          <style>
+            li.completed {
+              color: #aaa;
+              text-decoration: line-through;
+            }
+          </style>
+
+          this.list = [
+            {
+              title: 'Hello, world!',
+              done: false,
+            },
+            {
+              title: '牛乳を買う',
+              done: true,
+            },
+            {
+              title: "豚肉を買う",
+              done: false,
+            },
+          ];
+        </app>
+    </script>
+
+    <script>
+        // マウント
+        riot.mount('*');
+    </script>
+</body>
+
+</html>
